@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/core';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Dimensions, Image, ImageSourcePropType, SafeAreaView, Text, View, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { ThemeContext } from '../context/theme/ThemeContext';
 import { useAnimation } from '../hooks/useAnimation';
 
 /**
@@ -38,6 +39,8 @@ const items: Slide[] = [
 
 export const SlidesScreen = () => {
 
+    const { theme: { colors } } = useContext( ThemeContext );
+
     const navigator = useNavigation();
     const [activeSlide, setActiveSlide] = useState(0);
     const [isBottonVisible, setIsBottonVisible] = useState( false );
@@ -49,7 +52,7 @@ export const SlidesScreen = () => {
             <View
                 style={{
                     flex: 1,
-                    backgroundColor: 'white',
+                    backgroundColor: colors.background,
                     borderRadius: 5,
                     padding: 40,
                     justifyContent: 'center'
@@ -63,8 +66,8 @@ export const SlidesScreen = () => {
                         resizeMode: 'center'
                     }}
                 />
-                <Text style={ styles.title }>{ item.title }</Text>
-                <Text style={ styles.subTitle }>{ item.desc }</Text>
+                <Text style={{ ...styles.title, color: colors.primary }}>{ item.title }</Text>
+                <Text style={{ ...styles.subTitle, color: colors.text }}>{ item.desc }</Text>
             </View>
         )
     }
@@ -107,7 +110,7 @@ export const SlidesScreen = () => {
                         width: 10,
                         height: 10,
                         borderRadius: 10,
-                        backgroundColor: '#5856D6'
+                        backgroundColor: colors.primary
                     }}
                 />
 
@@ -121,7 +124,7 @@ export const SlidesScreen = () => {
                                 activeOpacity={ 0.9 }
                                 style={{
                                     flexDirection: 'row',
-                                    backgroundColor: '#5856D6',
+                                    backgroundColor: colors.primary,
                                     width: 125,
                                     height: 50,
                                     borderRadius: 10,

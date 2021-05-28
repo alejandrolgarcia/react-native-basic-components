@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Animated, Button, Easing, StyleSheet, View } from 'react-native'
 import { useAnimation } from '../hooks/useAnimation'
 

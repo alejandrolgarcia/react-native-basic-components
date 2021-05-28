@@ -60,6 +60,12 @@ export const menuItems: MenuItem[] = [
         name: 'Slides',
         icon: 'enter-outline',
         component: 'SlidesScreen' 
+    },
+
+    {
+        name: 'Settings',
+        icon: 'settings-outline',
+        component: 'SettingsScreen' 
     }
 
 ]

@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/core';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { ThemeContext } from '../context/theme/ThemeContext';
 import { MenuItem } from '../interfaces/interfaces';
 import { SpaceItem } from './SpaceItem';
 
@@ -18,6 +19,7 @@ export const FlatListMenuItem = ( { menuItem }: Props ) => {
      * Hook para navegar entre pantallas
      */
     const navigation = useNavigation();
+    const { theme: { colors } } = useContext( ThemeContext );
 
     /**
      * https://github.com/react-navigation/react-navigation/issues/7839
@@ -35,10 +37,10 @@ export const FlatListMenuItem = ( { menuItem }: Props ) => {
 
                 <Icon
                     name={ menuItem.icon }
-                    color="#5856D6"
+                    color={ colors.primary }
                     size={ 23 }
                 />
-                <Text style={ styles.itemText }>
+                <Text style={{ ...styles.itemText, color: colors.text }}>
                     { menuItem.name }
                 </Text>
 
@@ -46,7 +48,7 @@ export const FlatListMenuItem = ( { menuItem }: Props ) => {
 
                 <Icon
                     name="chevron-forward-outline"
-                    color="#5856D6"
+                    color={ colors.primary }
                     size={ 23 }
                 />
             </View>
